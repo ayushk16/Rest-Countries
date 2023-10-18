@@ -9,7 +9,7 @@ export const ThemeContext = createContext({
 
 // exporting themeprovider for app.jsx to wrap children inside it and provide them with passed values
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const switchTheme = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   };

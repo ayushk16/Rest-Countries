@@ -8,6 +8,12 @@ const SelectionArea = ({
   data,
   selectedRegion,
   setSelectedRegion,
+  selectedSubregion,
+  setSelectedSubregion,
+  setOrderBy,
+  setOrder,
+  orderBy,
+  order,
 }) => {
   const { darkMode } = useTheme();
 
@@ -19,6 +25,16 @@ const SelectionArea = ({
   });
   let regions = [...region];
 
+  let subregion = new Set();
+
+  data.forEach((element) => {
+    if (element.region.toLowerCase() === selectedRegion.toLowerCase()) {
+      subregion.add(element.subregion);
+    }
+  });
+
+  let subregions = [...subregion];
+  console.log(subregion);
   return (
     <>
       <div className="selection-area">
@@ -44,60 +60,130 @@ const SelectionArea = ({
             }}
           />
         </div>
-        <div>
-          <select
-            name="region"
-            id="region-selection"
-            className={
-              darkMode
-                ? 'region-selection-dark region-dark elements-dark'
-                : 'region-selection-light elements-light'
-            }
-            onChange={(e) => {
-              setSelectedRegion(() => {
-                return e.target.value.toLowerCase();
-              });
-            }}
-          >
-            <option
+        <div className="selections-holder">
+          <div>
+            <select
+              name="region"
+              id="region-selection"
               className={
                 darkMode
-                  ? 'region-option elements-dark'
-                  : 'region-option elements-light'
+                  ? 'selections region-selection-dark region-dark elements-dark'
+                  : 'selections region-selection-light elements-light'
               }
-              value=""
-              selected
-              hidden
-              disabled
+              onChange={(e) => {
+                setSelectedRegion(() => {
+                  return e.target.value.toLowerCase();
+                });
+                setSelectedSubregion('');
+                subregion.clear();
+              }}
             >
-              Filter By Region
-            </option>
-            <option
+              <option
+                className={
+                  darkMode
+                    ? 'region-option elements-dark'
+                    : 'region-option elements-light'
+                }
+                value=""
+                selected
+                hidden
+                disabled
+              >
+                Filter By Region
+              </option>
+              <option
+                className={
+                  darkMode
+                    ? 'region-option elements-dark'
+                    : 'region-option elements-light'
+                }
+                value=""
+              >
+                All
+              </option>
+              {regions.map((element, index) => {
+                return (
+                  <option
+                    className={
+                      darkMode
+                        ? 'region-option elements-dark'
+                        : 'region-option elements-light'
+                    }
+                    value={element}
+                    key={index}
+                  >
+                    {element}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <select
+              name="subregion"
+              value={selectedSubregion}
+              id="subregion"
               className={
                 darkMode
-                  ? 'region-option elements-dark'
-                  : 'region-option elements-light'
+                  ? 'selections region-selection-dark region-dark elements-dark'
+                  : 'selections region-selection-light elements-light'
               }
-              value=""
+              onChange={(e) => {
+                setSelectedSubregion(e.target.value);
+              }}
             >
-              All
-            </option>
-            {regions.map((element, index) => {
-              return (
-                <option
-                  className={
-                    darkMode
-                      ? 'region-option elements-dark'
-                      : 'region-option elements-light'
-                  }
-                  value={element}
-                  key={index}
-                >
-                  {element}
-                </option>
-              );
-            })}
-          </select>
+              <option value="">Select a region</option>
+              {subregions.map((element, index) => {
+                return (
+                  <option value={element} key={element}>
+                    {element}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <select
+              name="orderBy"
+              id="orderBy"
+              value={orderBy}
+              className={
+                darkMode
+                  ? 'selections region-selection-dark region-dark elements-dark'
+                  : 'selections region-selection-light elements-light'
+              }
+              onChange={(e) => {
+                setOrderBy(e.target.value);
+              }}
+            >
+              <option value="" selected>
+                Order By
+              </option>
+              <option value="population">Population</option>
+              <option value="area">Area</option>
+            </select>
+          </div>
+          <div>
+            <select
+              name="order"
+              id="order"
+              value={order}
+              className={
+                darkMode
+                  ? 'selections region-selection-dark region-dark elements-dark'
+                  : 'selections region-selection-light elements-light'
+              }
+              onChange={(e) => {
+                setOrder(e.target.value);
+              }}
+            >
+              <option value="" selected>
+                Select an order
+              </option>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
         </div>
       </div>
     </>
