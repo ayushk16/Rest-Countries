@@ -2,13 +2,14 @@ import { useEffect, useState, useCallback } from 'react';
 
 import useTheme, { ThemeProvider } from '../context/ThemeContext';
 
-import { SelectionArea, CountryCard, BgBody } from '../components';
+import { SelectionArea, CountryCard, BgBody, Error } from '../components';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
   // setting state for countries data, loading, error, search value and selected region
   const [countriesData, setCountriesData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedSubregion, setSelectedSubregion] = useState('');
@@ -32,7 +33,9 @@ function Home() {
           method: 'GET',
         });
 
-        if (!response.ok) throw new Error('Something went wrong');
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
         setError(false);
 
         let responseData = await response.json();
@@ -123,7 +126,7 @@ function Home() {
   if (error) {
     return (
       <>
-        <Error />
+        <Error setError={setError} />
       </>
     );
   }
@@ -162,7 +165,9 @@ function Home() {
               return <CountryCard country={element} key={index} />;
             })
           ) : (
-            <h1 className="not-found">No such countries found</h1>
+            <div className="no-data-found-1">
+              <h1>No such countries found</h1>
+            </div>
           )}
         </div>
       </main>

@@ -128,6 +128,16 @@
     width: 50%;
 }
 
+.no-data-found-2{
+    /* width: 100vw; */
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 @media (max-width:980px) {
     .country-details-holder-2{
         flex-direction: column;

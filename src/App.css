@@ -127,6 +127,9 @@ html{
   font-weight: 600;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 5px;
 }
+.search-bar:hover{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 5px;
+}
 
 .search-bar-light{
   color: var(--Dark-Gray);
@@ -166,6 +169,7 @@ html{
 
 .selections:hover{
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 .mode-img{
@@ -193,7 +197,7 @@ html{
   justify-content: space-evenly;
   /* justify-content: space-between; */
   gap: 3.7rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .country{
@@ -244,10 +248,29 @@ html{
 }
 
 .country:hover{
+  transform: translateY(-5px);
+  transform: scale3d(1.1);
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
+.no-data-found-1{
+  /* width: 100vw; */
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-error{
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 
 /* @media (max-width:1586px) {
   .content-area{

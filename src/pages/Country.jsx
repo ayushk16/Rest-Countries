@@ -207,7 +207,22 @@ const Country = () => {
           <p>Loading...</p>
         </div>
       ) : (
-        <div>No Data Found</div>
+        <div className="no-data-found-2">
+          <h1>No Data Found</h1>
+          <div className="back-btn-holder">
+            <button
+              className={
+                darkMode ? 'back-btn back-btn-dark' : 'back-btn back-btn-light'
+              }
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              <AiOutlineArrowLeft />
+              <span>Go Back</span>
+            </button>
+          </div>
+        </div>
       )}
     </>
   );

@@ -65,6 +65,7 @@ const SelectionArea = ({
             <select
               name="region"
               id="region-selection"
+              value={selectedRegion ? selectedRegion : ''}
               className={
                 darkMode
                   ? 'selections region-selection-dark region-dark elements-dark'
@@ -121,7 +122,7 @@ const SelectionArea = ({
           <div>
             <select
               name="subregion"
-              value={selectedSubregion}
+              value={selectedSubregion ? selectedRegion : ''}
               id="subregion"
               className={
                 darkMode
@@ -146,7 +147,7 @@ const SelectionArea = ({
             <select
               name="orderBy"
               id="orderBy"
-              value={orderBy}
+              value={orderBy ? orderBy : ''}
               className={
                 darkMode
                   ? 'selections region-selection-dark region-dark elements-dark'
@@ -167,7 +168,7 @@ const SelectionArea = ({
             <select
               name="order"
               id="order"
-              value={order}
+              value={order ? order : ''}
               className={
                 darkMode
                   ? 'selections region-selection-dark region-dark elements-dark'

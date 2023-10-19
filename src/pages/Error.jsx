@@ -1,7 +1,10 @@
 import React from 'react';
-import useTheme from '../../context/ThemeContext';
-const Error = ({ setError }) => {
+import { useNavigate } from 'react-router-dom';
+import useTheme from '../context/ThemeContext';
+
+const Error = () => {
   const { darkMode } = useTheme();
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -11,18 +14,17 @@ const Error = ({ setError }) => {
             : 'home-error home-error-light'
         }
       >
-        <h1>Ohh Snap !!</h1>
-        <h2>something went wrong</h2>
+        <h1>It says 404!</h1>
+        <h3> Wrong URL </h3>
         <button
           className={
             darkMode ? 'back-btn back-btn-dark' : 'back-btn back-btn-light'
           }
           onClick={() => {
-            setError(false);
-            window.location.reload();
+            navigate('/');
           }}
         >
-          Click To Reload
+          Home
         </button>
       </div>
     </>
