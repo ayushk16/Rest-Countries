@@ -243,6 +243,12 @@ html{
   content: ' '
 }
 
+.country:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+
+
 /* @media (max-width:1586px) {
   .content-area{
     justify-content: space-between;
@@ -260,7 +266,11 @@ html{
     justify-content: space-evenly;
   }  
 } */
-
+@media (max-width:800px) {
+  .country-details{
+    margin-left: 1rem
+  }
+}
 
 @media (max-width: 768px){
   .header{
@@ -295,8 +305,6 @@ html{
     gap: 0.5rem;
   }
 
-  #loader{
-  }
 
   #loader>p{
     font-size: 3rem;

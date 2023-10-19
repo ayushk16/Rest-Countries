@@ -2,12 +2,18 @@ import React from 'react';
 
 import useTheme from '../../context/ThemeContext';
 
+import { useNavigate } from 'react-router-dom';
 const CountryCard = ({ country }) => {
+  const Navigate = useNavigate();
   const { darkMode } = useTheme();
 
   return (
     <div
       className={darkMode ? 'country elements-dark' : 'country elements light'}
+      onClick={(e) => {
+        console.log(`/country/${country.cca3}`);
+        Navigate(`/country/${country.cca3}`);
+      }}
     >
       <div className="country-flag">
         <img src={country.flags.png} alt={country.name} className="flag-img" />
