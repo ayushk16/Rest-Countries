@@ -1,3 +1,7 @@
+## Hosted Page
+
+[click here](https://rest-countries-eight-alpha.vercel.app/)
+
 ## Getting started
 
 Open command line write following code

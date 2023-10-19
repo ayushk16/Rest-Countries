@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/country/:id" element={<Country />} />
+          <Route path="country/:id" element={<Country />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BgBody>
